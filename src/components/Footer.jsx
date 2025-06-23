@@ -1,9 +1,5 @@
-// src/components/Footer.jsx
+// Footer is now integrated directly in the LandingPage component
 export default function Footer() {
-    return (
-      <footer className="bg-gray-800 text-white py-6 text-center">
-        <p>&copy; {new Date().getFullYear()} CampusAid. Built for Students 💙</p>
-      </footer>
-    );
-  }
+  return null;
+}
   
