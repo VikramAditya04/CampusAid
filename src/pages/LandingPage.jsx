@@ -19,6 +19,7 @@ import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import FeatureCard from "../components/feature/FeatureCard";
 import { Button } from "../components/ui/Button";
+import SpotlightCard from "../components/ui/SpotlightCard";
 
 const features = [
   {
@@ -98,7 +99,7 @@ export default function LandingPage() {
     <div id="home-page" className="min-h-screen bg-bg animate-gradient">
       <Navbar />
       {/* Hero Section */}
-      <div className="min-h-[85vh] flex items-center justify-center relative overflow-hidden">
+      <div className="min-h-[99vh] flex items-center justify-center relative overflow-hidden bg-gradient-to-br from-[#0A0F2C] via-[#121C3B] to-[#1a237e]">
         {/* Animated background elements */}
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
           <div className="absolute top-[10%] left-[15%] w-32 h-32 rounded-full bg-primary opacity-10 animate-float blur-3xl"></div>
@@ -113,15 +114,15 @@ export default function LandingPage() {
                 <span className="text-primary inline-block animate-pulse-soft">Campus</span>
                 <span className="text-text">Aid</span>
               </span>
-              <span className="block text-transparent bg-clip-text bg-gradient-to-r from-primary via-accent to-primary h-16 sm:h-20 font-extrabold">
+              <span className="block text-transparent bg-clip-text bg-gradient-to-r from-blue-600 via-primary to-purple-600 h-16 sm:h-20">
                 {displayedText}
-                <span className="animate-pulse">|</span>
+                <span className="animate-pulse text-purple-600">|</span>
               </span>
             </h1>
-            <p className="mt-6 max-w-2xl mx-auto text-xl text-text-secondary sm:mt-8 animate-slide-up leading-relaxed">
+            <p className="mt-12 max-w-2xl mx-auto text-xl text-text-secondary sm:mt-8 animate-slide-up leading-relaxed">
               Connect with peers, find resources, and make the most of your university experience.
             </p>
-            <div className="mt-10 flex flex-col sm:flex-row justify-center gap-6">
+            <div className="mt-20  flex flex-col sm:flex-row justify-center gap-16">
               <Button size="lg" className="px-8 shadow-lg hover-scale animate-slide-up glass" style={{animationDelay: '200ms'}}>
                 <UserPlus className="mr-3 h-5 w-5" />
                 Join Now
@@ -135,7 +136,7 @@ export default function LandingPage() {
             </div>
           </div>
           {/* Scroll indicator */}
-          <div className="absolute bottom-10 left-1/2 transform -translate-x-1/2 animate-bounce">
+          <div className="absolute bottom-10 mt-10 mb-10 left-1/2 transform -translate-x-1/2 animate-bounce">
             <svg 
               xmlns="http://www.w3.org/2000/svg" 
               className="h-6 w-6 text-text-secondary"
@@ -180,10 +181,18 @@ export default function LandingPage() {
                     isStaggerComplete 
                       ? 'translate-y-0 opacity-100' 
                       : 'translate-y-10 opacity-0'
-                  } glass glass-hover shadow-2xl border-2 border-glass-border`}
+                  }`}
                   style={{ transitionDelay: `${150 * index}ms` }}
                 >
-                  <FeatureCard {...feature} path={path} />
+                  <SpotlightCard >
+                    <Link to={path} className="block h-full">
+                      <div className="flex flex-col items-center text-center">
+                        <div className="mb-4">{feature.icon}</div>
+                        <h3 className="text-lg font-bold text-text mb-2">{feature.title}</h3>
+                        <p className="text-sm text-text-secondary">{feature.description}</p>
+                      </div>
+                    </Link>
+                  </SpotlightCard>
                 </div>
               );
             })}
